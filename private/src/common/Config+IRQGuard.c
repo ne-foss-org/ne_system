@@ -6,14 +6,13 @@
 #include <stdbool.h>
 #include <Ne/Drivers/DDS.h>
 
-static struct ddk_guard_type* kIrqGuard =
-    (struct ddk_guard_type*) kalloc(sizeof(struct ddk_guard_type));
+static struct ddk_guard_type* kIrqGuard = NULL;
 
 /// @todo AMLALE: Lock specific IRQs.
 
 DDK_EXTERN void ddk_lock_irq(void) {
-  MUST_PASS(kIrqGuard);
-  if (!kIrqGuard) return;
+  if (!kIrqGuard) 
+    kIrqGuard = (struct ddk_guard_type*) kalloc(sizeof(struct ddk_guard_type));
 
   ddk_guard_function(kIrqGuard);
 
