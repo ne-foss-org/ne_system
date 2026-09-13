@@ -12,4 +12,11 @@
 #define _DDS (202605L)
 #endif
 
+#ifndef DDK_UNLOCK_IRQ
+#define DDK_UNLOCK_IRQ ATTRIBUTE(cleanup(ddk_unlock_irq))
+#endif
+
+DDK_EXTERN void ddk_lock_irq(void);
+DDK_EXTERN void ddk_unlock_irq(void);
+
 #endif // _NE_DDK_DDS_H_
