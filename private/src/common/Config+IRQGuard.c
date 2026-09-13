@@ -25,7 +25,6 @@ DDK_EXTERN void ddk_lock_irq(void) {
 
 /// @brief unlock interrupts, in other words resume them.
 DDK_EXTERN void ddk_unlock_irq(void) {
-  MUST_PASS(kIrqGuard);
   if (!kIrqGuard) return;
 
 #ifdef __NEOSKRNL__

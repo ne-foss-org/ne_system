@@ -43,7 +43,7 @@ elseif(DEFINED NEANT_SRC_RELEASE_PROFILE)
 	set(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
 	set(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)
 
-	add_library(System.CommonCore.dll SHARED Config+DDKGuard.c DDKSanityCheck.S)
+	add_library(System.CommonCore.dll SHARED Config+DDKGuard.c Config+IRQGuard.c DDKSanityCheck.S)
 
 	target_compile_definitions(System.CommonCore.dll PRIVATE _DEBUG __NEOSKRNL__)
 	target_compile_options(System.CommonCore.dll PRIVATE -ffreestanding)
